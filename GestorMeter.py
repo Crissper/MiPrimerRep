@@ -34,16 +34,23 @@ raiz.iconbitmap("icon.ico")
 lbl=Label(raiz, text="Selecione primero un archivo de texto")
 txt = Entry(raiz,width=10)
 
-ruta = "Nada"
+ruta = "nada"
 
 def abrirArchivo():
-    archivo =filedialog.askopenfilename(title="Elegi GIL",filetypes=(("Archivos de Texto", "*.txt"),))
+    archivo = filedialog.askopenfilename(title="Elije",filetypes=(("Archivos de Texto", "*.txt"),))
     print(archivo)
     ruta="Ruta: "+archivo
     print(ruta)
     lbl.configure(text=ruta)
     # NICO: Aca se puede poner las lineas que convierten el texto!!!
     # NICO: Abrir el archivo y guardarlo tambien supongo
+    # Cris: Ahi abre el archivo y lo lee. Lo q habias hecho era selecionarlo y mostar la ruta
+    with open(archivo ,"r") as f_obj:
+       LeeArchivo = f_obj.read()
+    lbl.configure(text=(LeeArchivo))
+
+
+
 
     
 def ConvertirArchivo():
